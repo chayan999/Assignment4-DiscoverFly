@@ -29,6 +29,8 @@
     <!--Booking Section-->
     <main class="main-content container">
         <div class="booking-form">
+            <h3 id="flightsBooking">Flights Booking</h3>
+            <div id="afterBookingform">
             <h3>Booking Flights</h3>
             <div class="input-group">
                 <label for="">Flying From</label>
@@ -71,7 +73,8 @@
                     <button onclick="airTickets('economyClass',false)" class="plus-minus-btn"><span >-</span></button>
                 </div>
             </div>
-            <div class="calculations">
+        </div>
+            <div id="afterBookingCalculations" class="calculations">
                 <div class="amount">
                     <div class="left">
                         <p>Subtotal</p>
@@ -99,7 +102,11 @@
                     </div>
                 </div>
             </div>
-            <button class="btn-style">Book Now</button>
+
+            <div id="afterBookingStyle">
+                <h3>Enjoy The Flight</h3>
+            </div>
+            <button id="book-btn" onclick="afterBooking()" class="btn-style">Book Now</button>
         </div>
 
         <div class="booking-content">
@@ -108,7 +115,7 @@
         </div>
     </section>
 
-    <!-- start js script -->
+    <!-- start java script -->
     <script>
         // First Class Ticket Increaser Show in .addEventListener
         document.getElementById('firstClassIncreaser').addEventListener('click', function(){
@@ -120,52 +127,7 @@
             airTickets('firstClass',false);
         });
 
-        // Economy  Class Ticket Increaser
-        // document.getElementById('EconomyClassIncreaser').addEventListener('click', function(){
-        //     economyClassTicket(true);
-        // });
-
-        // document.getElementById('EconomyClassDecreaser').addEventListener('click', function(){
-        //     economyClassTicket(false);
-        // });
-        /*document.getElementById('firstClassIncreaser').addEventListener('click', function(){
-            const firstClassGetInput = document.getElementById('firstClassInput');
-            const inputCount = parseInt(firstClassGetInput.value);
-            const newInput = inputCount + 1;
-            firstClassGetInput.value = newInput; 
-            const totalAmount = newInput * 150;
-            document.getElementById('FirstTicketPrice').innerText = totalAmount;
-        })
-
-        
-
-        // First Class Ticket Decreaser
-        document.getElementById('firstClassDecreaser').addEventListener('click', function(){
-            const firstClassGetInput = document.getElementById('firstClassInput');
-            const inputcount = parseInt(firstClassGetInput.value);
-            const newInput = inputcount - 1;
-            firstClassGetInput.value = newInput; 
-            const totalAmount = newInput * 150;
-            document.getElementById('FirstTicketPrice').innerText = totalAmount;
-        })*/
-
-
-        // Function For First Class Ticket
-        // function firstClassTicket(isIncrease){
-        //     const getInput = document.getElementById('firstClassInput');
-        //     const inputcount = parseInt(getInput.value);
-        //    let newInput = inputcount;
-        //    if(isIncrease == true){
-        //     newInput = inputcount + 1;
-        //    }
-        //    if(isIncrease == false && inputcount > 0){
-        //     newInput = inputcount - 1;
-        //    }
-        //     getInput.value = newInput; 
-        //     const totalAmount = newInput * 150;
-        //     document.getElementById('FirstTicketPrice').innerText = totalAmount;
-        // }
-
+    
         function airTickets(ticket,isIncrease){
             const getInput = document.getElementById(ticket + 'Input' );
             const inputcount = parseInt(getInput.value);
@@ -176,8 +138,7 @@
            if(isIncrease == false && inputcount > 0){
             newInput = inputcount - 1;
            }
-            getInput.value = newInput; 
-            // const totalAmount = newInput * 100;
+           getInput.value = newInput; 
            let totalAmount = 0;
            if(ticket == 'firstClass'){
             totalAmount = newInput*150;
@@ -219,6 +180,20 @@
             document.getElementById('vat').innerText = tax;
             const grandTotal = totalPrice + tax;
             document.getElementById('grandTotal').innerText = grandTotal;
+        }
+
+        // after bookin block
+
+        function afterBooking(){
+            document.getElementById("afterBookingform").style.display="none";
+            document.getElementById("book-btn").style.display="none";
+            document.getElementById("afterBookingCalculations").style.color="blue";
+            document.getElementById("flightsBooking").style.color="green";
+            document.getElementById("flightsBooking").innerText="Thank for Booking";
+            document.getElementById("flightsBooking").style.textAlign="center";
+            document.getElementById("afterBookingStyle").style.display="block";
+            document.getElementById("afterBookingStyle").style.color="blue";
+            document.getElementById("afterBookingStyle").style.textAlign="center";
         }
     </script>
 
