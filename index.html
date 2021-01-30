@@ -50,7 +50,7 @@
             </div>
             <div class="input-group f-class">
                 <div>
-                    <label  for="">First Class ($<span id="FirstTicketPrice">150</span> )</label>
+                    <label  for="">First Class ($<span id="firstClassPrice">150</span> )</label>
                     <input id="firstClassInput" class="inp-style inp-width" type="number" value="1">
                 </div>
                 <div>
@@ -67,8 +67,8 @@
                 </div>
                 <div>
                     <!-- Button For Economy Class Ticket Show in onclick event -->
-                    <button onclick="economyClassTicket(true)" class="plus-minus-btn"><span >+</span></button>
-                    <button onclick="economyClassTicket(false)" class="plus-minus-btn"><span >-</span></button>
+                    <button onclick="airTickets('economyClass',true)" class="plus-minus-btn"><span >+</span></button>
+                    <button onclick="airTickets('economyClass',false)" class="plus-minus-btn"><span >-</span></button>
                 </div>
             </div>
             <div class="calculations">
@@ -112,12 +112,12 @@
     <script>
         // First Class Ticket Increaser Show in .addEventListener
         document.getElementById('firstClassIncreaser').addEventListener('click', function(){
-            firstClassTicket(true);
+            airTickets('firstClass',true);
         });
 
         // First Class Ticket Decreaser Show in .addEventListener
         document.getElementById('firstClassDecreaser').addEventListener('click', function(){
-            firstClassTicket(false);
+            airTickets('firstClass',false);
         });
 
         // Economy  Class Ticket Increaser
@@ -151,8 +151,23 @@
 
 
         // Function For First Class Ticket
-        function firstClassTicket(isIncrease){
-            const getInput = document.getElementById('firstClassInput');
+        // function firstClassTicket(isIncrease){
+        //     const getInput = document.getElementById('firstClassInput');
+        //     const inputcount = parseInt(getInput.value);
+        //    let newInput = inputcount;
+        //    if(isIncrease == true){
+        //     newInput = inputcount + 1;
+        //    }
+        //    if(isIncrease == false && inputcount > 0){
+        //     newInput = inputcount - 1;
+        //    }
+        //     getInput.value = newInput; 
+        //     const totalAmount = newInput * 150;
+        //     document.getElementById('FirstTicketPrice').innerText = totalAmount;
+        // }
+
+        function airTickets(ticket,isIncrease){
+            const getInput = document.getElementById(ticket + 'Input' );
             const inputcount = parseInt(getInput.value);
            let newInput = inputcount;
            if(isIncrease == true){
@@ -162,25 +177,33 @@
             newInput = inputcount - 1;
            }
             getInput.value = newInput; 
-            const totalAmount = newInput * 150;
-            document.getElementById('FirstTicketPrice').innerText = totalAmount;
+            // const totalAmount = newInput * 100;
+           let totalAmount = 0;
+           if(ticket == 'firstClass'){
+            totalAmount = newInput*150;
+           }
+
+           if(ticket == 'economyClass'){
+            totalAmount = newInput*100;
+           }
+            document.getElementById(ticket + 'Price').innerText = totalAmount;
         }
 
          // Function For Economy Class Ticket
-         function economyClassTicket(isIncrease){
-            const getInput = document.getElementById('economyClassInput');
-            const inputcount = parseInt(getInput.value);
-           let newInput = inputcount;
-           if(isIncrease == true){
-            newInput = inputcount + 1;
-           }
-           if(isIncrease == false && inputcount > 0){
-            newInput = inputcount - 1;
-           }
-            getInput.value = newInput; 
-            const totalAmount = newInput * 100;
-            document.getElementById('economyClassPrice').innerText = totalAmount;
-        }
+        //  function economyClassTicket(isIncrease){
+        //     const getInput = document.getElementById('economyClassInput');
+        //     const inputcount = parseInt(getInput.value);
+        //    let newInput = inputcount;
+        //    if(isIncrease == true){
+        //     newInput = inputcount + 1;
+        //    }
+        //    if(isIncrease == false && inputcount > 0){
+        //     newInput = inputcount - 1;
+        //    }
+        //     getInput.value = newInput; 
+        //     const totalAmount = newInput * 100;
+        //     document.getElementById('economyClassPrice').innerText = totalAmount;
+        // }
 
     </script>
 
